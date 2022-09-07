@@ -1,6 +1,7 @@
 import axios from 'axios'
 
 export default async function handler(request, response) {
+  console.log(request);
   // 1. 检查 URL 查询字符串中是否有 code
   const { code } = request.query
   
