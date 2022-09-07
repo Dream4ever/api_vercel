@@ -1,0 +1,11 @@
+{
+  "name": "api_vercel",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Dream4ever/api_vercel.git",
+  "author": "Dream4ever <cnhwvista@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.27.2"
+  }
+}
