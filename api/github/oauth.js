@@ -68,6 +68,6 @@ export default async function handler(request, response) {
   if (queryString.length > 1) {
     redirectUrl += queryString
   }
-  console.log(encodeURI(redirectUrl))
+
   response.redirect(encodeURI(redirectUrl))
 }
