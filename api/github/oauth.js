@@ -1,7 +1,6 @@
 import axios from 'axios'
 
 export default async function handler(request, response) {
-  console.log(request);
   // 1. 检查 URL 查询字符串中是否有 code
   const { code } = request.query
   
@@ -47,10 +46,28 @@ export default async function handler(request, response) {
     return response.status(400).end()
   }
 
-  response.status(200).send({
-    login: user.login || '',
-    id: user.id || '',
-    node_id: user.node_id || '',
-    avatar_url: user.avatar_url || '',
-  })
+
+  // 4. 重定向至最初页面，并在 URL 查询字符串中
+  // 带上用户 GitHub 信息
+  let redirectUrl = 'https://test.uppbook.com.cn/github_app/index.html'
+  let queryString = '?'
+
+  if (user.login) {
+    queryString += `login=${user.login}`
+  }
+  if (user.id) {
+    queryString += `${queryString.length > 1 ? '&' : ''}id=${user.id}`
+  }
+  if (user.node_id) {
+    queryString += `${queryString.length > 1 ? '&' : ''}node_id=${user.node_id}`
+  }
+  if (user.avatar_url) {
+    queryString += `${queryString.length > 1 ? '&' : ''}avatar_url=${user.avatar_url}`
+  }
+
+  if (queryString.length > 1) {
+    redirectUrl += queryString
+  }
+  console.log(redirectUrl)
+  response.redirect(redirectUrl)
 }
