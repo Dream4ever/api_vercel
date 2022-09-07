@@ -5,7 +5,6 @@ export default async function handler(request, response) {
   const { code } = request.query
   
   if (!code) {
-    console.log('no code')
     return response.status(400).end()
   }
 
@@ -23,13 +22,13 @@ export default async function handler(request, response) {
   }
 
   const result = await axios.post(url, headers)
-  console.log(result.data)
 
   if (result.status !== 200 || /access_token=\w+/.test(result.data)) {
     return response.status(400).end()
   }
 
   const accessToken = result.data.match(/access_token=(\w+)/)[1]
+  console.log(result.data, accessToken)
 
 
   // 3. 用 access token 获取用户信息
