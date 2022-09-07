@@ -42,9 +42,9 @@ export default async function handler(request, response) {
   const result2 = await axios.get(url2, headers2)
   const user = result2.data
 
-  if (!user || !user.id) {
-    return response.status(400).end()
-  }
+  // if (!user || !user.id) {
+  //   return response.status(400).end()
+  // }
 
   response.status(200).send(user)
 }
