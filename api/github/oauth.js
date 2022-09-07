@@ -21,5 +21,5 @@ export default async function handler(request, response) {
   const result = await axios.post(url, headers)
 
 
-  response.status(200).send(result)
+  response.status(200).send(result.data)
 }
