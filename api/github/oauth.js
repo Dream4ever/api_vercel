@@ -28,7 +28,6 @@ export default async function handler(request, response) {
   }
 
   const accessToken = result.data.match(/access_token=(\w+)/)[1]
-  console.log(result.data, accessToken)
 
 
   // 3. 用 access token 获取用户信息
@@ -40,13 +39,12 @@ export default async function handler(request, response) {
     }
   }
   const result2 = await axios.get(url2, headers2)
-  console.log(result2.data)
 
   const user = result2.data
 
-  // if (!user || !user.id) {
-  //   return response.status(400).end()
-  // }
+  if (!user) {
+    return response.status(400).end()
+  }
 
   response.status(200).send(user)
 }
