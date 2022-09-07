@@ -1,9 +1,9 @@
 export default function handler(request, response) {
-  const { name } = request.query
+  const { code } = request.query
 
-  if (!name) {
-    return response.status(200).send(`Hello Nobody~`)
+  if (!code) {
+    return response.status(400).end()
   }
 
-  response.status(200).send(`Hello ${name}!`)
+  response.status(200).send(`Hello ${code}!`)
 }
