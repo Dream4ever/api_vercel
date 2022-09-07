@@ -66,8 +66,8 @@ export default async function handler(request, response) {
   }
 
   if (queryString.length > 1) {
-    redirectUrl += encodeURIComponent(queryString)
+    redirectUrl += queryString
   }
-  console.log(redirectUrl)
-  response.redirect(redirectUrl)
+  console.log(encodeURI(redirectUrl))
+  response.redirect(encodeURI(redirectUrl))
 }
