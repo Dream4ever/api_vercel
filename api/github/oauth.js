@@ -22,9 +22,8 @@ export default async function handler(request, response) {
   }
 
   const result = await axios.post(url, headers)
-  console.log(result.status, /access_token=\w+/.test(result.data))
 
-  if (result.status !== 200 || /access_token=\w+/.test(result.data)) {
+  if (result.status !== 200 || !/access_token=\w+/.test(result.data)) {
     return response.status(400).end()
   }
 
