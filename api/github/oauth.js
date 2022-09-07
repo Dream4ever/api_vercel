@@ -46,5 +46,10 @@ export default async function handler(request, response) {
     return response.status(400).end()
   }
 
-  response.status(200).send(user)
+  response.status(200).send({
+    login: user.login || '',
+    id: user.id || '',
+    node_id: user.node_id || '',
+    avatar_url: user.avatar_url || '',
+  })
 }
