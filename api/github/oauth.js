@@ -39,7 +39,8 @@ export default async function handler(request, response) {
       Authorization: `token ${accessToken}`
     }
   }
-  const user = await axios.get(url2, headers2)
+  const result2 = await axios.get(url2, headers2)
+  const user = result2.data
 
   if (!user || !user.id) {
     return response.status(400).end()
