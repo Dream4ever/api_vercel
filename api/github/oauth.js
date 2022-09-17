@@ -49,7 +49,7 @@ export default async function handler(request, response) {
 
   // 4. 重定向至最初页面，并在 URL 查询字符串中
   // 带上用户 GitHub 信息
-  let redirectUrl = 'https://soulcard.noncegeek.com/home'
+  let redirectUrl = 'https://soulcard.noncegeek.com/editor'
   let queryString = '?'
 
   if (user.login) {
