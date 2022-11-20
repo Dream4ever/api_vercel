@@ -1,4 +1,4 @@
-const axios = require('axios')
+import axios from 'axios'
 
 export default async function handler(request, response) {
   // 1. 检查 URL 查询字符串中是否有 code
