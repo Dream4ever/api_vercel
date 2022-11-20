@@ -7,14 +7,9 @@ export default async function handler(request, response) {
   if (!addr) {
     return response.status(400).end()
   }
-  console.log(addr)
-  return response.status(200).send({ addr })
 
   // 2. 用 code 获取 access token
-  const url = 'https://github.com/login/oauth/access_token?' +
-  `client_id=${process.env.CLIENT_ID}&` +
-  `client_secret=${process.env.CLIENT_SECRET}&` +
-  `code=${code}`
+  const url = 'https://gist.githubusercontent.com/Dream4ever/b638d7ee2a176e75c3b07c05767c5cc8/raw/48d79ce54add00e56727a51c17f5cfb87a8946a8/tigerchi_whitelist.json'
 
   const headers = {
     headers: {
@@ -22,8 +17,11 @@ export default async function handler(request, response) {
     }
   }
 
-  const result = await axios.post(url, headers)
+  const result = await axios.get(url, headers)
 
+  console.log(result.data)
+  return response.status(200).send({ result.data })
+ 
   if (result.status !== 200 || !/access_token=\w+/.test(result.data)) {
     return response.status(400).end()
   }
