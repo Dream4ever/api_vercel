@@ -17,7 +17,7 @@ export default async function handler(request, response) {
     }
   }
 
-  const result = await axios.get(url, headers)
+  const result = await axios.get(url)
 
   console.log(result.data)
   return response.status(200).send({ result.data })
