@@ -7,6 +7,7 @@ export default async function handler(request, response) {
   if (!addr) {
     return response.status(400).end()
   }
+  return response.status(200).json(addr)
 
   // 2. 用 code 获取 access token
   const url = 'https://gist.githubusercontent.com/Dream4ever/b638d7ee2a176e75c3b07c05767c5cc8/raw/48d79ce54add00e56727a51c17f5cfb87a8946a8/tigerchi_whitelist.json'
